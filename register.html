@@ -10,8 +10,10 @@
 
 <body>
   <div class="container">
-    <h1>Your Account</h1>
+    <h1>register an Account</h1>
     <form>
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
       <label for="username">Username</label>
       <input type="text" id="username" placeholder="Enter your username">
       <label for="password">Password</label>
@@ -44,10 +46,11 @@
     function submitForm(e) {
       e.preventDefault();
 
+      var email = getInputVal('email');
       var username = getInputVal('username');
       var password = getInputVal('password');
 
-      saveaccountRef(username, password);
+      saveaccountRef(email, username, password);
     }
 
 
@@ -55,9 +58,10 @@
       return document.getElementById(id).value;
     }
 
-    function saveaccountRef(username, password) {
+    function saveaccountRef(email, username, password) {
       var newWeatherRef = weatherRef.push();
       newWeatherRef.set({
+        email, email,
         username, username,
         password, password
       });
